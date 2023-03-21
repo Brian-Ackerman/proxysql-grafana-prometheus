@@ -15,7 +15,7 @@ services:
   prometheus:
     image: prom/prometheus:v2.32.1
     volumes:
-      - ./prometheus/:/etc/prometheus/
+      - /swarm/cluster/data/proxysql_monitor/prometheus:/etc/prometheus/
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -63,7 +63,7 @@ services:
     ports:
       - 9093:9093
     volumes:
-      - ./alertmanager/:/etc/alertmanager/
+      - /swarm/cluster/data/proxysql_monitor/alertmanager:/etc/alertmanager/
     networks:
       - backend
     restart: always
@@ -97,8 +97,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - /swarm/cluster/data/proxysql_monitor/grafana:/var/lib/grafana
+      - /swarm/cluster/data/proxysql_monitor/grafana/provisioning/:/etc/grafana/provisioning/
     env_file:
       - ./grafana/config.monitoring
     networks:
