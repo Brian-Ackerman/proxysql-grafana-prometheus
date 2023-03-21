@@ -16,7 +16,7 @@ services:
     image: prom/prometheus:v2.32.1
     volumes:
       - /swarm/cluster/data/proxysql_monitor/prometheus:/etc/prometheus/
-      - prometheus_data:/prometheus
+      - /swarm/cluster/data/proxysql_monitor/prometheus:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
