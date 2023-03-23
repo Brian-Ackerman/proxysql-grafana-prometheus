@@ -121,7 +121,7 @@ services:
         delay: 10s
         failure_action: rollback
       restart_policy:
-        always
+        - always
 
 #  pushgateway:
 #    image: prom/pushgateway
