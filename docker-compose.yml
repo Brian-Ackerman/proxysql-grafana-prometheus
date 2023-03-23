@@ -120,7 +120,10 @@ services:
       update_config:
         delay: 10s
         failure_action: rollback
-      restart: always
+      restart_policy:
+        delay: 10s
+        window: 120s
+        max_attempts: 6
 
 #  pushgateway:
 #    image: prom/pushgateway
