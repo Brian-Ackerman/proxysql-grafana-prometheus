@@ -96,10 +96,10 @@ services:
       - prometheus
     ports:
       - 3000:3000
-    environment:
-      - GF_SERVER_PROTOCOL=https
-      - GF_SERVER_CERT_PATH="/etc/grafana/certs/servercertificate.crt"
-      - GF_SERVER_CERT_KEY="/etc/grafana/keys/private.key"
+    #environment:
+    #  - GF_SERVER_PROTOCOL=https
+    #  - GF_SERVER_CERT_FILE=/etc/grafana/certs/servercertificate.crt
+    #  - GF_SERVER_CERT_KEY=/etc/grafana/keys/private.key
     volumes:
       - /swarm/cluster/data/proxysql_monitor/grafana:/var/lib/grafana
       - /swarm/cluster/data/proxysql_monitor/grafana/provisioning/:/etc/grafana/provisioning/
