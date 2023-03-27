@@ -99,7 +99,7 @@ services:
     volumes:
       - /swarm/cluster/data/proxysql_monitor/grafana:/var/lib/grafana
       - /swarm/cluster/data/proxysql_monitor/grafana/provisioning/:/etc/grafana/provisioning/
-      - /swarm/cluster/data/proxysql_monitor/certs:/etc/grafana/certs/
+      - /swarm/cluster/data/proxysql_monitor/certs:/etc/grafana/certs
       - /swarm/cluster/srv/ssl:/etc/grafana/keys
     env_file:
       - ./grafana/config.monitoring
