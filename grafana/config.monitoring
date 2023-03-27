@@ -1,5 +1,5 @@
 GF_SECURITY_ADMIN_PASSWORD=foobar
 GF_USERS_ALLOW_SIGN_UP=false
 GF_SERVER_PROTOCOL=https
-GF_SERVER_CERT_PATH=/etc/grafana/certs/servercertificate.crt
-GF_SERVER_CERT_KEY=/etc/grafana/keys/private.key
+GF_SERVER_CERT_PATH="/etc/grafana/certs/servercertificate.crt"
+GF_SERVER_CERT_KEY="/etc/grafana/keys/private.key"
