@@ -99,6 +99,11 @@ services:
     volumes:
       - /swarm/cluster/data/proxysql_monitor/grafana:/var/lib/grafana
       - /swarm/cluster/data/proxysql_monitor/grafana/provisioning/:/etc/grafana/provisioning/
+      - /swarm/cluster/data/proxysql_monitor/certs:/etc/grafana/certs/
+    environment:
+      - GF_SERVER_PROTOCOL=https
+      - GF_SERVER_CERT_PATH=/etc/grafana/certs/servercertificate.crt
+      - GF_SERVER_CERT_KEY=/etc/grafana/certs/private.key
     env_file:
       - ./grafana/config.monitoring
     networks:
