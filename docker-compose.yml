@@ -106,17 +106,23 @@ services:
       - traefik-net
     deploy:
       labels:
-        traefik.http.services.proxysql_grafana-https.loadbalancer.server.port: '3000'
-        traefik.http.routers.proxysql_grafana-https.entrypoints: https
-        traefik.http.routers.proxysql_grafanaRouter.middlewares: middlesware-secure-headers@file
-        traefik.http.routers.proxysql_grafanaRouter.service: proxysql_grafana
-        traefik.http.routers.proxysql_grafana-https.rule: Host(`dev-proxymonitor.steeleglobal.net`)
-        traefik.http.services.proxysql_grafana-https.loadbalancer.passhostheader: 'true'
-        traefik.http.services.proxysql_grafana-https.loadbalancer.sticky.cookie: 'true'
-        traefik.enable: 'true'
-        traefik.http.services.proxysql_grafana-https.loadbalancer.server.scheme: https
-        traefik.http.routers.proxysql_grafana-https.tls: 'true'
-        traefik.http.routers.proxysql_grafana-https.service: proxysql_grafana-https
+        - traefik.enable=true
+        - traefik.docker.network=traefik-net
+        - traefik.http.services.grafana.loadbalancer.server.port=3000
+        - traefik.http.routers.grafana.rule=Host(`dev-proxymonitor.steeleglobal.net`)
+        - traefik.http.routers.grafana.service=grafana
+        - traefik.http.routers.grafana.entrypoints=http
+        #traefik.http.services.proxysql_grafana-https.loadbalancer.server.port: '3000'
+        #traefik.http.routers.proxysql_grafana-https.entrypoints: https
+        #traefik.http.routers.proxysql_grafanaRouter.middlewares: middlesware-secure-headers@file
+        #traefik.http.routers.proxysql_grafanaRouter.service: proxysql_grafana
+        #traefik.http.routers.proxysql_grafana-https.rule: Host(`dev-proxymonitor.steeleglobal.net`)
+        #traefik.http.services.proxysql_grafana-https.loadbalancer.passhostheader: 'true'
+        #traefik.http.services.proxysql_grafana-https.loadbalancer.sticky.cookie: 'true'
+        #traefik.enable: 'true'
+        #traefik.http.services.proxysql_grafana-https.loadbalancer.server.scheme: https
+        #traefik.http.routers.proxysql_grafana-https.tls: 'true'
+        #traefik.http.routers.proxysql_grafana-https.service: proxysql_grafana-https
       update_config:
         delay: 10s
         failure_action: rollback
